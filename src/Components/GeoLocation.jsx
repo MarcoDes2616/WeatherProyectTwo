@@ -1,12 +1,16 @@
 import React, { useContext, useEffect, useState } from "react";
-import { locationContext } from "../contexts/LocationContext";
+
 import TheLoader from "./TheLoader";
+import DataContext from "../contexts/DataProvider";
 
 const GeoLocation = () => {
   const [isAllow, setIsAllow] = useState(false);
   // loader
-  const { setIsLoader, setLongLat, isLoader, longlat } =
-    useContext(locationContext);
+  const { isLoader,
+    setIsLoader,
+    longLat,
+    setLongLat } =
+    useContext(DataContext);
   // longitude latitude
   useEffect(() => {
     const success = (position) => {
@@ -18,10 +22,8 @@ const GeoLocation = () => {
         long: coords.longitude,
         lat: coords.latitude,
       });
-      console.log(longlat, "funcionando localizacion");
     };
     const error = (err) => {
-      console.log("localizacion error");
       setIsAllow(false);
       setIsLoader(true);
     };

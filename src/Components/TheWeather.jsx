@@ -3,13 +3,15 @@ import useApi from "../Hooks/useApi";
 import TheLoader from "./TheLoader";
 import videobg from "../assets/cloudsLoop.mp4";
 import DataProvider from "../contexts/DataProvider";
+import DataContext from "../contexts/DataProvider";
 
 const TheWeather = () => {
   // ================ CONVERT CELCIOUS/FARHENHEIT ===========
   const [Convert, setConvert] = useState(false);
 
-  const dataApi = useContext(DataProvider);
-  console.log(dataApi, "este es la info sacada de usecontext");
+  const {dataApi} = useContext(DataContext);
+
+  console.log(dataApi);
 
   return (
     <>
